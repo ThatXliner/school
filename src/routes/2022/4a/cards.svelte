@@ -40,9 +40,61 @@
 					<thead><tr><td>Carbon</td><td>Hydrogen</td><td>Oxygen</td></tr></thead>
 					<tbody>
 						<tr
-							><td><input type="number" step="1" bind:value={players[cur].c} /></td><td
-								><input type="number" step="1" bind:value={players[cur].h} /></td
-							><td><input type="number" step="1" bind:value={players[cur].o} /></td><td
+							><td
+								><div>
+									<span
+										on:click={() => {
+											players[cur].c++;
+										}}
+										class="btn btn-success"
+									>
+										<PlusIcon size="24" class="inline" />
+									</span>
+									{players[cur].c}
+									<span
+										class="btn btn-danger"
+										on:click={() => {
+											players[cur].c--;
+										}}><MinusIcon size="24" class="inline" /></span
+									>
+								</div></td
+							><td
+								><div>
+									<span
+										on:click={() => {
+											players[cur].h++;
+										}}
+										class="btn btn-success"
+									>
+										<PlusIcon size="24" class="inline" />
+									</span>
+									{players[cur].h}
+									<span
+										class="btn btn-danger"
+										on:click={() => {
+											players[cur].h--;
+										}}><MinusIcon size="24" class="inline" /></span
+									>
+								</div></td
+							><td
+								><div>
+									<span
+										on:click={() => {
+											players[cur].o++;
+										}}
+										class="btn btn-success"
+									>
+										<PlusIcon size="24" class="inline" />
+									</span>
+									{players[cur].o}
+									<span
+										class="btn btn-danger"
+										on:click={() => {
+											players[cur].o--;
+										}}><MinusIcon size="24" class="inline" /></span
+									>
+								</div></td
+							><td
 								><div
 									class="btn btn-secondary"
 									on:click={() => {
