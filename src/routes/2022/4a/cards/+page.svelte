@@ -1,5 +1,4 @@
 <script>
-	import { PlusIcon, MinusIcon } from 'svelte-feather-icons';
 	import { SvelteToast, toast } from '@zerodevx/svelte-toast';
 
 	let players = [
@@ -18,7 +17,17 @@
 			}}
 			class="btn btn-primary ml-3"
 		>
-			<PlusIcon size="24" class="inline" /> Add player
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="w-6 h-6 inline"
+			>
+				<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+			</svg>
+			Add player
 		</span>
 		<span
 			on:click={() => {
@@ -26,7 +35,17 @@
 			}}
 			class="btn btn-primary ml-3"
 		>
-			<MinusIcon size="24" class="inline" /> Remove player
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="w-6 h-6 inline"
+			>
+				<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+			</svg>
+			Remove player
 		</span>
 	</div>
 	<br />
@@ -48,15 +67,38 @@
 										}}
 										class="btn btn-success"
 									>
-										<PlusIcon size="24" class="inline" />
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke-width="1.5"
+											stroke="currentColor"
+											class="w-6 h-6 inline"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												d="M12 4.5v15m7.5-7.5h-15"
+											/>
+										</svg>
 									</span>
 									{players[cur].c}
 									<span
-										class="btn btn-danger"
+										class="btn btn-error"
 										on:click={() => {
 											players[cur].c--;
-										}}><MinusIcon size="24" class="inline" /></span
-									>
+										}}
+										><svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke-width="1.5"
+											stroke="currentColor"
+											class="w-6 h-6 inline"
+										>
+											<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+										</svg>
+									</span>
 								</div></td
 							><td
 								><div>
@@ -66,15 +108,38 @@
 										}}
 										class="btn btn-success"
 									>
-										<PlusIcon size="24" class="inline" />
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke-width="1.5"
+											stroke="currentColor"
+											class="w-6 h-6 inline"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												d="M12 4.5v15m7.5-7.5h-15"
+											/>
+										</svg>
 									</span>
 									{players[cur].h}
 									<span
-										class="btn btn-danger"
+										class="btn btn-error"
 										on:click={() => {
 											players[cur].h--;
-										}}><MinusIcon size="24" class="inline" /></span
-									>
+										}}
+										><svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke-width="1.5"
+											stroke="currentColor"
+											class="w-6 h-6 inline"
+										>
+											<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+										</svg>
+									</span>
 								</div></td
 							><td
 								><div>
@@ -84,15 +149,38 @@
 										}}
 										class="btn btn-success"
 									>
-										<PlusIcon size="24" class="inline" />
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke-width="1.5"
+											stroke="currentColor"
+											class="w-6 h-6 inline"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												d="M12 4.5v15m7.5-7.5h-15"
+											/>
+										</svg>
 									</span>
 									{players[cur].o}
 									<span
-										class="btn btn-danger"
+										class="btn btn-error"
 										on:click={() => {
 											players[cur].o--;
-										}}><MinusIcon size="24" class="inline" /></span
-									>
+										}}
+										><svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke-width="1.5"
+											stroke="currentColor"
+											class="w-6 h-6 inline"
+										>
+											<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+										</svg>
+									</span>
 								</div></td
 							><td
 								><div
@@ -143,7 +231,7 @@
 								</div></td
 							><td
 								><div
-									class="btn btn-danger"
+									class="btn btn-error"
 									on:click={() => {
 										players[cur].h -= 2;
 										players[cur].o--;
@@ -153,7 +241,7 @@
 								</div></td
 							><td
 								><div
-									class="btn btn-danger"
+									class="btn btn-error"
 									on:click={() => {
 										players[cur].c--;
 										players[cur].o -= 2;

@@ -2,27 +2,27 @@ name: Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 16
-      uses: actions/setup-node@v1
-      with:
-        node-version: 16.x
+      - uses: actions/checkout@v2
+      - name: Use Node.js 18
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18.x
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: Build project
-      run: npm run build
+      - name: Build project
+        run: pnpm run build
 
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.2.5
-      with:
-        branch: gh-pages # The branch the action should deploy to.
-        folder: build # The folder the action should deploy.
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
