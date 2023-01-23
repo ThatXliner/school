@@ -57,7 +57,7 @@
 				/>
 			</div>
 			<p class="text-3xl">is the same as</p>
-			<div>{@html katex.renderToString(`${base}^${equals} = ${argument}`)}</div>
+			<div>{@html katex.renderToString(`${base}^{${equals}} = ${argument}`)}</div>
 		</div>
 	</div>
 	<div class="btn-group">

@@ -40,7 +40,7 @@
 				on:change={(event) => {
 					b = new Decimal(event.currentTarget.value);
 				}}
-			/>) = {@html katex.renderToString(`\\ln{${b}^${a}} = \\ln{${c}}`)}
+			/>) = {@html katex.renderToString(`\\ln{${b}^{${a}}} = \\ln{${c}}`)}
 		</div>
 		<div class="btn-group">
 			<span class="btn btn-disabled text-base-content">Try these examples:</span>
