@@ -1,0 +1,296 @@
+<script>
+	import EquationViewer from './EquationViewer.svelte';
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import { onMount } from 'svelte';
+	import LogToExp from './LogToExp.svelte';
+
+	import ProductProperty from './ProductProperty.svelte';
+	import QuotientProperty from './QuotientProperty.svelte';
+	import PowerProperty from './PowerProperty.svelte';
+	import InverseProperty from './InverseProperty.svelte';
+	onMount(() => {
+		gsap.registerPlugin(ScrollTrigger);
+		gsap
+			.to('#first-scroll-button', { y: '-=100px', ease: 'sine.inOut', duration: 1.5 })
+			.yoyo(true)
+			.repeat(-1);
+		let introTimeline = gsap.timeline({
+			scrollTrigger: {
+				trigger: '#intro',
+				start: 'center bottom',
+				end: 'top top',
+				scrub: 1,
+				pin: true,
+				once: true
+			}
+		});
+		introTimeline.from('#intro >*', { opacity: 0, duration: 1, stagger: 1.5 });
+
+		let propertyTimeline = gsap.timeline({
+			scrollTrigger: { trigger: '#properties', start: 'center bottom', end: '+=500' }
+		});
+		propertyTimeline.onLeave = () => {
+			propertyTimeline.progress(1);
+		};
+		propertyTimeline.from('#properties > h2', { opacity: 0, duration: 2 });
+		propertyTimeline.from('#properties > table', { opacity: 0, duration: 2 });
+		propertyTimeline.from('#properties > table > tbody > tr', {
+			opacity: 0,
+			duration: 0.5,
+			stagger: 1
+		});
+		// gsap.from('#try-properties', {
+		// 	opacity: 0,
+		// 	scrollTrigger: { trigger: '#try-properties', start: 'top center' }
+		// });
+		// introTimeline.from('#intro > svg', { opacity: 0 });
+		// gsap.from('#block-1', {
+		// 	x: -200,
+		// 	opacity: 0,
+		// 	scrollTrigger: { trigger: '#block-1', start: 'top center' }
+		// });
+	});
+</script>
+
+<svelte:head
+	><link
+		rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+		integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+		crossorigin="anonymous"
+	/></svelte:head
+>
+<section class="text-center h-screen flex flex-col">
+	<h1>
+		THE <span id="log"><span>LOG</span></span> PROJECT
+	</h1>
+	<i class="text-5xl flex-auto">By Bryan Hu</i>
+	<p class="text-4xl flex-auto">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke-width="1.5"
+			stroke="currentColor"
+			id="first-scroll-button"
+			class="card w-16 h-16 inline bg-accent/50 rounded-full"
+		>
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"
+			/>
+		</svg>
+	</p>
+</section>
+<section id="intro" class="h-screen text-center flex mt-16 flex-col">
+	<h2 class="">A logarithm...</h2>
+	<svg
+		class="w-64 p-5 block mx-auto"
+		viewBox="0 -694 4828.2 935.4"
+		xmlns="http://www.w3.org/2000/svg"
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+	>
+		<defs>
+			<path
+				id="c"
+				d="m42 46h14q39 0 47 14v8q0 9 0 23t0 33 1 43 0 50 0 55 0 57q0 37 0 78t0 75 0 60-1 44 0 17q-3 19-14 25t-45 9h-18v23q0 23 2 23l10 1q10 1 29 2t37 2q17 1 37 2t30 3 11 1h3v-315q0-317 1-319 4-8 12-11 21-3 49-3h16v-46h-8l-23 1q-23 1-49 1t-38 1-38 0-50-2l-23-1h-8v46h16z"
+			/>
+			<path
+				id="b"
+				d="m28 214q0 95 65 164t157 70q90 0 155-68t66-165q0-95-64-160t-157-65q-97 0-159 67t-63 157zm222-184q122 0 122 163v57q0 22-1 38t-7 38-16 36-31 28-49 20q-5 1-16 1-30 0-57-12-43-22-56-61t-13-92v-20q0-96 19-135 32-61 105-61z"
+			/>
+			<path
+				id="d"
+				d="m329 409q44 44 100 44 30 0 43-19t13-38q0-14-9-25t-27-11q-33 0-37 30-2 14 3 21 0 1 1 3v1q-28-3-53-22-8-5-8-7 0-1 4-5t9-12 11-18 9-26 4-33q0-62-49-105t-121-44q-50 0-99 28-11-18-11-38 0-35 26-52 9-6 17-6t72-2q84-1 108-6 61-9 96-41 39-39 39-98 0-67-78-103-60-31-142-31-83 0-143 31-78 35-78 100 0 36 21 60t42 33l11 6q-36 31-36 84 0 47 29 85-44 44-44 99 0 63 50 106t121 44q51 0 95-26l11-7zm-30-66q-5 28-26 44t-52 17q-29 0-50-16t-26-45q-3-17-3-51 0-44 7-65t30-35q17-10 43-10 22 0 38 7t23 18 11 20 5 15q3 16 3 50t-3 51zm104-418q0 25-14 41t-41 23-49 9-54 2h-27q-67 0-80-6-20-9-31-28t-12-40q0-10 6-23t21-30 48-28 80-12q69 0 111 28t42 64z"
+			/>
+			<path
+				id="g"
+				d="m213 578-13-5q-14-5-40-10t-58-7h-19v46h19q47 2 87 15t56 24 28 22q2 3 12 3 9 0 17-6v-299l1-300q7-7 12-9t24-4 62-2h26v-46h-11q-21 3-159 3-136 0-157-3h-12v46h26q22 0 38 0t25 1 16 3 8 2 6 5 6 4v517z"
+			/>
+			<path
+				id="a"
+				d="m96 585q56 81 153 81 48 0 96-26t78-92q37-83 37-228 0-155-43-237-20-42-55-67t-61-31-51-7q-26 0-52 6t-61 32-55 67q-43 82-43 237 0 174 57 265zm225 12q-30 32-71 32-42 0-72-32-25-26-33-72t-8-192q0-158 8-208t36-79q28-30 69-30 40 0 68 30 29 30 36 84t8 203q0 145-8 191t-33 73z"
+			/>
+			<path
+				id="e"
+				d="m56 347q0 13 14 20h637q15-8 15-20 0-11-14-19l-318-1h-318q-16 5-16 20zm0-194q0 15 16 20h636q14-10 14-20 0-13-15-20h-637q-14 7-14 20z"
+			/>
+			<path
+				id="f"
+				d="m109 429q-27 0-43 18t-16 44q0 71 53 123t132 52q91 0 152-56t62-145q0-43-20-82t-48-68-80-74q-36-31-100-92l-59-56 76-1q157 0 167 5 7 2 24 89v3h40v-3q-1-3-13-91t-15-92v-3h-371v31q0 7 6 15t30 35q29 32 50 56 9 10 34 37t34 37 29 33 28 34 23 30 21 32 15 29 13 32 7 30 3 33q0 63-34 109t-97 46q-33 0-58-17t-35-33-10-19q0-1 5-1 18 0 37-14t19-46q0-25-16-42t-45-18z"
+			/>
+		</defs>
+		<g transform="scale(1 -1)" fill="currentColor" stroke="currentColor" stroke-width="0">
+			<g data-mml-node="math">
+				<g data-mml-node="msub">
+					<g data-mml-node="mi">
+						<use xlink:href="#c" />
+						<use transform="translate(278)" xlink:href="#b" />
+						<use transform="translate(778)" xlink:href="#d" />
+					</g>
+				</g>
+				<g transform="translate(1328)" data-mml-node="mo">
+					<use xlink:href="#MJX-9-TEX-N-2061" />
+				</g>
+				<g transform="translate(1494.7)" data-mml-node="mn">
+					<use xlink:href="#g" />
+					<use transform="translate(500)" xlink:href="#a" />
+					<use transform="translate(1e3)" xlink:href="#a" />
+				</g>
+				<g transform="translate(3272.4)" data-mml-node="mo">
+					<use xlink:href="#e" />
+				</g>
+				<g transform="translate(4328.2)" data-mml-node="mn">
+					<use xlink:href="#f" />
+				</g>
+			</g>
+		</g>
+	</svg>
+	<p class="text-4xl">Is just another way to write an exponential equation</p>
+	<div class="flex justify-center"><LogToExp /></div>
+</section>
+<section id="properties" class="h-screen">
+	<h2 class=" text-center">
+		Here are the <i>properties</i> of a <span id="log"><span>log</span></span>
+	</h2>
+
+	<table class="table w-fit shadow-lg rounded-box mx-auto">
+		<!-- head -->
+		<thead>
+			<tr>
+				<th>Name of Property</th>
+				<th>Definition</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Product Property</th>
+				<td
+					>Adding two logs <b>of the same base</b> is the same as multiplying the parameters together</td
+				>
+			</tr>
+			<tr>
+				<th>Quotient Property</th>
+				<td
+					>Likewise, subtracting 2 logarithms of the same base is the same as dividing the
+					parameters</td
+				>
+			</tr>
+			<tr>
+				<th>Power Property</th>
+				<td
+					>But when you multiply a logarithm by constant, it's the same as raising the parameter
+					inside of the logarithm to the constant</td
+				>
+			</tr>
+			<tr>
+				<th>Inverse Property</th>
+				<td
+					>It can easily be proven that <svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-6 inline-block"
+						viewBox="0 -750 5469.2 1000"
+						xmlns:xlink="http://www.w3.org/1999/xlink"
+						style=""
+						><defs
+							><path
+								id="MJX-3-TEX-N-6C"
+								d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"
+							/><path
+								id="MJX-3-TEX-N-6F"
+								d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z"
+							/><path
+								id="MJX-3-TEX-N-67"
+								d="M329 409Q373 453 429 453Q459 453 472 434T485 396Q485 382 476 371T449 360Q416 360 412 390Q410 404 415 411Q415 412 416 414V415Q388 412 363 393Q355 388 355 386Q355 385 359 381T368 369T379 351T388 325T392 292Q392 230 343 187T222 143Q172 143 123 171Q112 153 112 133Q112 98 138 81Q147 75 155 75T227 73Q311 72 335 67Q396 58 431 26Q470 -13 470 -72Q470 -139 392 -175Q332 -206 250 -206Q167 -206 107 -175Q29 -140 29 -75Q29 -39 50 -15T92 18L103 24Q67 55 67 108Q67 155 96 193Q52 237 52 292Q52 355 102 398T223 442Q274 442 318 416L329 409ZM299 343Q294 371 273 387T221 404Q192 404 171 388T145 343Q142 326 142 292Q142 248 149 227T179 192Q196 182 222 182Q244 182 260 189T283 207T294 227T299 242Q302 258 302 292T299 343ZM403 -75Q403 -50 389 -34T348 -11T299 -2T245 0H218Q151 0 138 -6Q118 -15 107 -34T95 -74Q95 -84 101 -97T122 -127T170 -155T250 -167Q319 -167 361 -139T403 -75Z"
+							/><path
+								id="MJX-3-TEX-I-78"
+								d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"
+							/><path id="MJX-3-TEX-N-2061" d="" /><path
+								id="MJX-3-TEX-N-28"
+								d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"
+							/><path
+								id="MJX-3-TEX-I-79"
+								d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"
+							/><path
+								id="MJX-3-TEX-N-29"
+								d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"
+							/><path
+								id="MJX-3-TEX-N-3D"
+								d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"
+							/></defs
+						><g
+							stroke="currentColor"
+							fill="currentColor"
+							stroke-width="0"
+							transform="matrix(1 0 0 -1 0 0)"
+							><g data-mml-node="math"
+								><g data-mml-node="msub"
+									><g data-mml-node="mi"
+										><use xlink:href="#MJX-3-TEX-N-6C" /><use
+											xlink:href="#MJX-3-TEX-N-6F"
+											transform="translate(278, 0)"
+										/><use xlink:href="#MJX-3-TEX-N-67" transform="translate(778, 0)" /></g
+									><g data-mml-node="TeXAtom" transform="translate(1278, -241.4) scale(0.707)"
+										><g data-mml-node="mi"><use xlink:href="#MJX-3-TEX-I-78" /></g></g
+									></g
+								><g data-mml-node="mo" transform="translate(1732.5, 0)"
+									><use xlink:href="#MJX-3-TEX-N-2061" /></g
+								><g data-mml-node="TeXAtom" transform="translate(1899.1, 0)"
+									><g data-mml-node="mo"><use xlink:href="#MJX-3-TEX-N-28" /></g><g
+										data-mml-node="msup"
+										transform="translate(389, 0)"
+										><g data-mml-node="mi"><use xlink:href="#MJX-3-TEX-I-78" /></g><g
+											data-mml-node="mi"
+											transform="translate(572, 413) scale(0.707)"
+											><use xlink:href="#MJX-3-TEX-I-79" /></g
+										></g
+									><g data-mml-node="mo" transform="translate(1357.5, 0)"
+										><use xlink:href="#MJX-3-TEX-N-29" /></g
+									></g
+								><g data-mml-node="mo" transform="translate(3923.4, 0)"
+									><use xlink:href="#MJX-3-TEX-N-3D" /></g
+								><g data-mml-node="mi" transform="translate(4979.2, 0)"
+									><use xlink:href="#MJX-3-TEX-I-79" /></g
+								></g
+							></g
+						></svg
+					>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+<section id="try-properties" class="h-screen">
+	<h2 class=" text-center">Try them out!</h2>
+	<div class="flex space-x-2 mx-3 flex-wrap justify-around space-y-5">
+		<ProductProperty />
+		<QuotientProperty />
+		<PowerProperty />
+		<InverseProperty />
+	</div>
+</section>
+<section class="h-screen">
+	<h2 class="text-center "><span id="log"><span>LOGARITHM</span></span> BUILDER (beta)</h2>
+	<EquationViewer />
+</section>
+
+<style lang="postcss">
+	#log:hover span {
+		display: none;
+	}
+	#log:hover:before {
+		content: '\01FAB5';
+	}
+
+	/* math {
+		font-family: 'Computer Modern', 'Times New Roman', Times, serif;
+	} */
+	h1 {
+		@apply text-9xl;
+	}
+	h2 {
+		@apply text-5xl;
+	}
+</style>
