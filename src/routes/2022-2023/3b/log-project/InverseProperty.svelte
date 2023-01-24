@@ -18,7 +18,10 @@
 <div class="card w-fit bg-base-100 shadow-xl">
 	<div class="card-body">
 		<h2 class="card-title">Inverse Property</h2>
-		<!-- <p>If a dog chews shoes whose shoes does he choose?</p> -->
+		<p class="text-lg">
+			<b>Definition:</b>
+			{@html katex.renderToString(`\\log_{b}{b^x} = x`)}
+		</p>
 		<div class="bg-base-200 rounded-box text-3xl p-9 mx-auto">
 			log <sub>
 				<input

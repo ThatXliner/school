@@ -262,8 +262,29 @@
 		</tbody>
 	</table>
 </section>
-<section id="try-properties" class="h-screen">
+<section id="try-properties" class="h-fit">
 	<h2 class=" text-center">Try them out!</h2>
+	<div class="alert shadow-lg w-fit mx-auto my-5">
+		<div>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				class="stroke-info flex-shrink-0 w-6 h-6"
+				><path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+				/></svg
+			>
+			<span
+				>The definitions assume that all bases and parameters of the logarithmic functions are valid
+				(i.e. positive and more than 0, respectively)</span
+			>
+		</div>
+	</div>
+
 	<div class="flex space-x-2 mx-3 flex-wrap justify-around space-y-5">
 		<ProductProperty />
 		<QuotientProperty />
@@ -271,7 +292,7 @@
 		<InverseProperty />
 	</div>
 </section>
-<section class="h-screen">
+<section class="h-screen mt-[50vh]">
 	<h2 class="text-center "><span id="log"><span>LOGARITHM</span></span> BUILDER (beta)</h2>
 	<EquationViewer />
 </section>

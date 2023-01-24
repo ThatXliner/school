@@ -21,7 +21,10 @@
 <div class="card w-fit bg-base-100 shadow-xl">
 	<div class="card-body">
 		<h2 class="card-title">Quotient Property</h2>
-		<!-- <p>If a dog chews shoes whose shoes does he choose?</p> -->
+		<p class="text-lg">
+			<b>Definition:</b>
+			{@html katex.renderToString(`\\log_{b}{x} - \\log_{b}{y} = \\log_{b}{\\frac{x}{y}}`)}
+		</p>
 		<div class="bg-base-200 rounded-box text-3xl p-9 mx-auto">
 			ln (<input
 				type="number"
