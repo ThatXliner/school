@@ -145,7 +145,7 @@
 			<tr>
 				<th>Power Property</th>
 				<td
-					>But when you multiply a logarithm by constant, it's the same as raising the parameter
+					>But when you multiply a logarithm by a constant, it's the same as raising the argument
 					inside of the logarithm to the constant</td
 				>
 			</tr>
