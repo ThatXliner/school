@@ -22,7 +22,7 @@
 	<div class="card-body">
 		<h2 class="card-title">Power Property</h2>
 		<p class="text-lg">
-			<b>Definition:</b>
+			<b>Formula:</b>
 			{@html katex.renderToString(`a\\log_{b}{x} = \\log_{b}{x^a}`)}
 		</p>
 		<div class="bg-base-200 rounded-box text-3xl p-9 mx-auto">

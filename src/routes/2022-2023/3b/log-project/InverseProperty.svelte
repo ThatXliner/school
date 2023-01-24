@@ -19,7 +19,7 @@
 	<div class="card-body">
 		<h2 class="card-title">Inverse Property</h2>
 		<p class="text-lg">
-			<b>Definition:</b>
+			<b>Formula:</b>
 			{@html katex.renderToString(`\\log_{b}{b^x} = x`)}
 		</p>
 		<div class="bg-base-200 rounded-box text-3xl p-9 mx-auto">
