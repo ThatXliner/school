@@ -17,7 +17,7 @@
 </script>
 
 <div>
-	<div class="p-3 bg-base-200 rounded-box w-full">
+	<div class="p-3 bg-base-200 rounded-t-box w-full">
 		<p class="text-5xl">Try it!</p>
 		<div class="text-4xl flex flex-col space-y-3">
 			<div>
@@ -60,8 +60,10 @@
 			<div>{@html katex.renderToString(`${base}^{${equals}} = ${argument}`)}</div>
 		</div>
 	</div>
-	<div class="btn-group">
-		<span class="btn btn-disabled text-base-content">Try these examples:</span>
+	<div class="btn-group rounded-b-lg">
+		<span class="btn btn-disabled text-base-content" style="border-top-left-radius: 0px"
+			>Try these examples:</span
+		>
 		<button
 			class="btn normal-case text-xl"
 			class:btn-active={base.toNumber() == 10 && argument.toNumber() == 100}
@@ -83,6 +85,7 @@
 		<button
 			class="btn normal-case text-xl"
 			class:btn-active={base.toNumber() == 4 && argument.toNumber() == 64}
+			style="border-top-right-radius: 0px"
 			on:click={() => {
 				base = new Decimal(4);
 				argument = new Decimal(64);
