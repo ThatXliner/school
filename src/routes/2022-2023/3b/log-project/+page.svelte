@@ -1,14 +1,18 @@
-<script>
-	import EquationViewer from './EquationViewer.svelte';
+<script lang="ts">
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import { onMount } from 'svelte';
-	import LogToExp from './LogToExp.svelte';
+	import katex from 'katex';
 
+	import EquationViewer from './EquationViewer.svelte';
+
+	import LogToExp from './LogToExp.svelte';
 	import ProductProperty from './ProductProperty.svelte';
 	import QuotientProperty from './QuotientProperty.svelte';
 	import PowerProperty from './PowerProperty.svelte';
 	import InverseProperty from './InverseProperty.svelte';
+
+	const latex = (x: string) => katex.renderToString(x);
 	onMount(() => {
 		gsap.registerPlugin(ScrollTrigger);
 		gsap
@@ -18,8 +22,8 @@
 		let introTimeline = gsap.timeline({
 			scrollTrigger: {
 				trigger: '#intro',
-				start: 'center bottom',
-				end: 'top top',
+				start: 'top center-=250',
+				end: '+=500',
 				scrub: 1,
 				pin: true,
 				once: true
@@ -53,15 +57,16 @@
 	});
 </script>
 
-<svelte:head
-	><link
+<svelte:head>
+	<!-- For KaTeX -->
+	<link
 		rel="stylesheet"
 		href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
 		integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
 		crossorigin="anonymous"
-	/></svelte:head
->
-<section class="text-center h-screen flex flex-col">
+	/>
+</svelte:head>
+<section class="text-center h-[69vh] flex flex-col">
 	<h1>
 		THE <span id="log"><span>LOG</span></span> PROJECT
 	</h1>
@@ -84,75 +89,25 @@
 		</svg>
 	</p>
 </section>
-<section id="intro" class="h-screen text-center flex mt-16 flex-col">
-	<h2 class="">A logarithm...</h2>
-	<svg
-		class="w-64 p-5 block mx-auto"
-		viewBox="0 -694 4828.2 935.4"
-		xmlns="http://www.w3.org/2000/svg"
-		xmlns:xlink="http://www.w3.org/1999/xlink"
-	>
-		<defs>
-			<path
-				id="c"
-				d="m42 46h14q39 0 47 14v8q0 9 0 23t0 33 1 43 0 50 0 55 0 57q0 37 0 78t0 75 0 60-1 44 0 17q-3 19-14 25t-45 9h-18v23q0 23 2 23l10 1q10 1 29 2t37 2q17 1 37 2t30 3 11 1h3v-315q0-317 1-319 4-8 12-11 21-3 49-3h16v-46h-8l-23 1q-23 1-49 1t-38 1-38 0-50-2l-23-1h-8v46h16z"
-			/>
-			<path
-				id="b"
-				d="m28 214q0 95 65 164t157 70q90 0 155-68t66-165q0-95-64-160t-157-65q-97 0-159 67t-63 157zm222-184q122 0 122 163v57q0 22-1 38t-7 38-16 36-31 28-49 20q-5 1-16 1-30 0-57-12-43-22-56-61t-13-92v-20q0-96 19-135 32-61 105-61z"
-			/>
-			<path
-				id="d"
-				d="m329 409q44 44 100 44 30 0 43-19t13-38q0-14-9-25t-27-11q-33 0-37 30-2 14 3 21 0 1 1 3v1q-28-3-53-22-8-5-8-7 0-1 4-5t9-12 11-18 9-26 4-33q0-62-49-105t-121-44q-50 0-99 28-11-18-11-38 0-35 26-52 9-6 17-6t72-2q84-1 108-6 61-9 96-41 39-39 39-98 0-67-78-103-60-31-142-31-83 0-143 31-78 35-78 100 0 36 21 60t42 33l11 6q-36 31-36 84 0 47 29 85-44 44-44 99 0 63 50 106t121 44q51 0 95-26l11-7zm-30-66q-5 28-26 44t-52 17q-29 0-50-16t-26-45q-3-17-3-51 0-44 7-65t30-35q17-10 43-10 22 0 38 7t23 18 11 20 5 15q3 16 3 50t-3 51zm104-418q0 25-14 41t-41 23-49 9-54 2h-27q-67 0-80-6-20-9-31-28t-12-40q0-10 6-23t21-30 48-28 80-12q69 0 111 28t42 64z"
-			/>
-			<path
-				id="g"
-				d="m213 578-13-5q-14-5-40-10t-58-7h-19v46h19q47 2 87 15t56 24 28 22q2 3 12 3 9 0 17-6v-299l1-300q7-7 12-9t24-4 62-2h26v-46h-11q-21 3-159 3-136 0-157-3h-12v46h26q22 0 38 0t25 1 16 3 8 2 6 5 6 4v517z"
-			/>
-			<path
-				id="a"
-				d="m96 585q56 81 153 81 48 0 96-26t78-92q37-83 37-228 0-155-43-237-20-42-55-67t-61-31-51-7q-26 0-52 6t-61 32-55 67q-43 82-43 237 0 174 57 265zm225 12q-30 32-71 32-42 0-72-32-25-26-33-72t-8-192q0-158 8-208t36-79q28-30 69-30 40 0 68 30 29 30 36 84t8 203q0 145-8 191t-33 73z"
-			/>
-			<path
-				id="e"
-				d="m56 347q0 13 14 20h637q15-8 15-20 0-11-14-19l-318-1h-318q-16 5-16 20zm0-194q0 15 16 20h636q14-10 14-20 0-13-15-20h-637q-14 7-14 20z"
-			/>
-			<path
-				id="f"
-				d="m109 429q-27 0-43 18t-16 44q0 71 53 123t132 52q91 0 152-56t62-145q0-43-20-82t-48-68-80-74q-36-31-100-92l-59-56 76-1q157 0 167 5 7 2 24 89v3h40v-3q-1-3-13-91t-15-92v-3h-371v31q0 7 6 15t30 35q29 32 50 56 9 10 34 37t34 37 29 33 28 34 23 30 21 32 15 29 13 32 7 30 3 33q0 63-34 109t-97 46q-33 0-58-17t-35-33-10-19q0-1 5-1 18 0 37-14t19-46q0-25-16-42t-45-18z"
-			/>
-		</defs>
-		<g transform="scale(1 -1)" fill="currentColor" stroke="currentColor" stroke-width="0">
-			<g data-mml-node="math">
-				<g data-mml-node="msub">
-					<g data-mml-node="mi">
-						<use xlink:href="#c" />
-						<use transform="translate(278)" xlink:href="#b" />
-						<use transform="translate(778)" xlink:href="#d" />
-					</g>
-				</g>
-				<g transform="translate(1328)" data-mml-node="mo">
-					<use xlink:href="#MJX-9-TEX-N-2061" />
-				</g>
-				<g transform="translate(1494.7)" data-mml-node="mn">
-					<use xlink:href="#g" />
-					<use transform="translate(500)" xlink:href="#a" />
-					<use transform="translate(1e3)" xlink:href="#a" />
-				</g>
-				<g transform="translate(3272.4)" data-mml-node="mo">
-					<use xlink:href="#e" />
-				</g>
-				<g transform="translate(4328.2)" data-mml-node="mn">
-					<use xlink:href="#f" />
-				</g>
-			</g>
-		</g>
-	</svg>
+<section id="intro" class="h-screen text-center space-y-5">
+	<h2>A logarithm...</h2>
+	<p class="text-4xl p-4 bg-base-200 rounded-box w-fit mx-auto">
+		{@html latex(`\\log_{b}{x}`)}
+	</p>
 	<p class="text-4xl">Is just another way to write an exponential equation</p>
 	<div class="flex justify-center"><LogToExp /></div>
+	<div class="text-lg">
+		<p>But since some bases are <i>so commonly used</i>, we have shorthands for them:</p>
+		{@html latex(`\\log_{10}{x} = \\log_{}{x}`)}
+		<br />
+		{@html latex(`\\log_{e}{x} = \\ln{x}`)}, where {@html latex(`e`)} is
+		<a href="https://en.wikipedia.org/wiki/E_(mathematical_constant)" class="link link-primary"
+			>Euler's number
+		</a>
+	</div>
 </section>
 <section id="properties" class="h-screen">
-	<h2 class=" text-center">
+	<h2 class="my-3 text-center">
 		Here are the <i>properties</i> of a <span id="log"><span>log</span></span>
 	</h2>
 
@@ -291,6 +246,50 @@
 		<PowerProperty />
 		<InverseProperty />
 	</div>
+</section>
+<section class="mt-96 h-screen my-3 text-center">
+	<h2>One more thing: <b><i>The Change of Base Formula</i></b></h2>
+	<p class="text-4xl my-3 mx-auto">
+		This formula is defined as <br />
+		{@html latex(`\\log_{x}{y} = \\frac{\\log_{b}{y}}{\\log_{b}{x}}`)}<br />
+		(where {@html latex(`b`)} is any base (e.g. {@html latex(
+			`\\log_{7}{49} = \\frac{\\ln{49}}{\\ln{7}}`
+		)}))
+	</p>
+	<div class="alert alert-info shadow-lg text-lg max-w-lg mx-auto my-3">
+		<div>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				class="stroke-current flex-shrink-0 w-6 h-6"
+				><path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+				/></svg
+			>
+			<span
+				>It's helpful when you're solving equations or inequalities algebraically (and don't know
+				whether or not you should flip the sign) or when your calculator doesn't have an option to
+				use a different base.</span
+			>
+		</div>
+	</div>
+	<p class="text-4xl my-3">Some examples are:</p>
+	<ul class="text-2xl w-fit mx-auto text-left my-3">
+		<li><span> - {@html latex(`\\log_{69}{420} = \\frac{\\ln{420}}{\\ln{69}}`)}</span></li>
+		<li>
+			<span>
+				- {@html latex(`\\log_{10}{100} = \\frac{\\ln{100}}{\\ln{10}}`)} (although why would you do that
+				when you have {@html latex(`\\log{100}`)})</span
+			>
+		</li>
+		<li>
+			<span> - {@html latex(`\\log_{3}{128} = \\frac{\\ln{128}}{\\ln{3}}`)}</span>
+		</li>
+	</ul>
 </section>
 <section class="h-screen mt-[50vh]">
 	<h2 class="text-center "><span id="log"><span>LOGARITHM</span></span> BUILDER (beta)</h2>
