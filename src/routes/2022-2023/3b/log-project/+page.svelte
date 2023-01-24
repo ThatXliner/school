@@ -54,14 +54,13 @@
 		let baseChangeTimline = gsap.timeline({
 			scrollTrigger: {
 				trigger: '#change-base',
-				start: 'top center-=250',
-				end: '+=500',
+				start: 'top top',
 				scrub: 1,
 				pin: true,
 				once: true
 			}
 		});
-		baseChangeTimline.from('#change-base >*', { opacity: 0, duration: 1, stagger: 1.5 });
+		baseChangeTimline.from('#change-base > *', { opacity: 0, duration: 1, stagger: 1.5 });
 		baseChangeTimline.from('#change-base > ul > *', { opacity: 0, duration: 1, stagger: 1.5 });
 	});
 </script>
@@ -256,11 +255,12 @@
 		<InverseProperty />
 	</div>
 </section>
-<section id="change-base" class="mt-96 h-screen my-3 text-center">
+<section id="change-base" class="mt-5 h-fit text-center text-4xl">
 	<h2>One more thing: <b><i>The Change of Base Formula</i></b></h2>
-	<p class="text-4xl my-3 mx-auto">
-		This formula is defined as <br />
-		{@html latex(`\\log_{x}{y} = \\frac{\\log_{b}{y}}{\\log_{b}{x}}`)}<br />
+	<!-- <p class="text-4xl my-3 mx-auto" /> -->
+	<p class="my-3">This formula is defined as</p>
+	{@html latex(`\\log_{x}{y} = \\frac{\\log_{b}{y}}{\\log_{b}{x}}`)}
+	<p>
 		where {@html latex(`b`)} is any base (e.g. {@html latex(
 			`\\log_{7}{49} = \\frac{\\ln{49}}{\\ln{7}}`
 		)})
