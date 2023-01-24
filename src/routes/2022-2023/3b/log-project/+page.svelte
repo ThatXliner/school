@@ -32,11 +32,16 @@
 		introTimeline.from('#intro >*', { opacity: 0, duration: 1, stagger: 1.5 });
 
 		let propertyTimeline = gsap.timeline({
-			scrollTrigger: { trigger: '#properties', start: 'center bottom', end: '+=500' }
+			scrollTrigger: {
+				trigger: '#properties',
+				start: 'center bottom',
+				end: '+=500',
+				onLeave: () => {
+					propertyTimeline.seek('end');
+				}
+			}
 		});
-		propertyTimeline.onLeave = () => {
-			propertyTimeline.progress(1);
-		};
+
 		propertyTimeline.from('#properties > h2', { opacity: 0, duration: 2 });
 		propertyTimeline.from('#properties > table', { opacity: 0, duration: 2 });
 		propertyTimeline.from('#properties > table > tbody > tr', {
@@ -44,16 +49,20 @@
 			duration: 0.5,
 			stagger: 1
 		});
-		// gsap.from('#try-properties', {
-		// 	opacity: 0,
-		// 	scrollTrigger: { trigger: '#try-properties', start: 'top center' }
-		// });
-		// introTimeline.from('#intro > svg', { opacity: 0 });
-		// gsap.from('#block-1', {
-		// 	x: -200,
-		// 	opacity: 0,
-		// 	scrollTrigger: { trigger: '#block-1', start: 'top center' }
-		// });
+		propertyTimeline.addLabel('end');
+
+		let baseChangeTimline = gsap.timeline({
+			scrollTrigger: {
+				trigger: '#change-base',
+				start: 'top center-=250',
+				end: '+=500',
+				scrub: 1,
+				pin: true,
+				once: true
+			}
+		});
+		baseChangeTimline.from('#change-base >*', { opacity: 0, duration: 1, stagger: 1.5 });
+		baseChangeTimline.from('#change-base > ul > *', { opacity: 0, duration: 1, stagger: 1.5 });
 	});
 </script>
 
@@ -247,16 +256,16 @@
 		<InverseProperty />
 	</div>
 </section>
-<section class="mt-96 h-screen my-3 text-center">
+<section id="change-base" class="mt-96 h-screen my-3 text-center">
 	<h2>One more thing: <b><i>The Change of Base Formula</i></b></h2>
 	<p class="text-4xl my-3 mx-auto">
 		This formula is defined as <br />
 		{@html latex(`\\log_{x}{y} = \\frac{\\log_{b}{y}}{\\log_{b}{x}}`)}<br />
-		(where {@html latex(`b`)} is any base (e.g. {@html latex(
+		where {@html latex(`b`)} is any base (e.g. {@html latex(
 			`\\log_{7}{49} = \\frac{\\ln{49}}{\\ln{7}}`
-		)}))
+		)})
 	</p>
-	<div class="alert alert-info shadow-lg text-lg max-w-lg mx-auto my-3">
+	<div class="alert alert-info shadow-lg text-lg max-w-lg mx-auto my-3 text-left">
 		<div>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -278,7 +287,7 @@
 		</div>
 	</div>
 	<p class="text-4xl my-3">Some examples are:</p>
-	<ul class="text-2xl w-fit mx-auto text-left my-3">
+	<ul class="text-2xl w-fit mx-auto text-left space-y-3">
 		<li><span> - {@html latex(`\\log_{69}{420} = \\frac{\\ln{420}}{\\ln{69}}`)}</span></li>
 		<li>
 			<span>
