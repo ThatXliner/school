@@ -301,7 +301,7 @@
 	</ul>
 </section>
 <section class="h-screen mt-[50vh]">
-	<h2 class="text-center "><span id="log"><span>LOGARITHM</span></span> BUILDER (beta)</h2>
+	<h2 class="text-center "><span id="log"><span>Logarithm</span></span> Condenser</h2>
 	<EquationViewer />
 </section>
 
