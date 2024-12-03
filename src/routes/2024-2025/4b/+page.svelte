@@ -75,6 +75,16 @@
 		<img
 			src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Ahilya_Ghat_by_the_Ganges%2C_Varanasi.jpg/2560px-Ahilya_Ghat_by_the_Ganges%2C_Varanasi.jpg"
 		/>
+		<img
+			src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Chet_Singh_Ghat_in_Varanasi.jpg/2560px-Chet_Singh_Ghat_in_Varanasi.jpg"
+		/>
+		<img
+			src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Kedar_Ghat_in_Varanasi.jpg/2560px-Kedar_Ghat_in_Varanasi.jpg"
+		/>
+		<img
+			src="https://c.ndtvimg.com/2021-04/v46fqijo_varanasi-ganga-ghat-pti-april-2021_650x400_15_April_21.jpg?im=FeatureCrop,algorithm=dnn,width=650,height=400"
+		/>
+		<img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Lalita_Ghat.jpg" />
 	</div>
 </main>
 <footer>
