@@ -1,3 +1,11 @@
+<script context="module">
+	export const metadata = {
+		title: 'The Log Project',
+		description:
+			'An interactive, animated explainer on logarithms — covering conversions, properties, and equations with live KaTeX rendering.'
+	};
+</script>
+
 <script lang="ts">
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';

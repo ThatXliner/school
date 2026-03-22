@@ -1,3 +1,10 @@
+<script context="module">
+	export const metadata = {
+		title: 'Card Game Scorer',
+		description: 'A score tracker for a card game, built for class.'
+	};
+</script>
+
 <script>
 	import { SvelteToast, toast } from '@zerodevx/svelte-toast';
 

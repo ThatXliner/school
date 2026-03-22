@@ -1,3 +1,10 @@
+<script context="module">
+	export const metadata = {
+		title: 'ACTs Project',
+		description: 'A separate site built for a class project.'
+	};
+</script>
+
 <script>
 	import { onMount } from 'svelte';
 

@@ -1,3 +1,11 @@
+<script context="module">
+	export const metadata = {
+		title: 'Varanasi Ghats Infographic',
+		description:
+			'An infographic exploring the cultural, historical, and environmental significance of the Varanasi Ghats along the River Ganges.'
+	};
+</script>
+
 <script lang="ts">
 	import './index.css';
 </script>
