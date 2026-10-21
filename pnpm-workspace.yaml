@@ -1,0 +1,4 @@
+allowBuilds:
+  '@sveltejs/kit': set this to true or false
+overrides:
+  "undici": "^6.29.1"
