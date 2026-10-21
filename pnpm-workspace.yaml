@@ -4,3 +4,5 @@ overrides:
 allowBuilds:
   "@sveltejs/kit": true
   esbuild: true
+  '@parcel/watcher': true
+  svelte-preprocess: true
